@@ -11,6 +11,7 @@ fn foo2(a: &u32, b: &u32) {
 }
 
 #[derive(Debug)]
+
 enum MyEnum2<'ax> {
     Add,
     Subtract,
@@ -21,6 +22,7 @@ fn main() {
     trait TraitA {
         fn foo(&self);
     }
+
     trait TraitB {
         fn bar(&self);
     }
@@ -34,5 +36,6 @@ fn main() {
     }
 
     let x: u32 = 99;
+
     x.foo();
 }

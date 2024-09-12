@@ -1,5 +1,7 @@
 use crate::MyEnum2;
+
 #[test]
+
 fn main() {
     let a = MyEnum2::Add;
 
@@ -9,6 +11,7 @@ fn main() {
         MyEnum2::Mix(val) => println!("val = {val}"),
         // _=>{}
     };
+
     println!("a = {:?}", a);
 
     println!("{}", '1' as u8)

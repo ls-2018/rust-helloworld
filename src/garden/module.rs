@@ -1,4 +1,5 @@
 mod module_a {
+
     pub trait Shape {
         fn play(&self) {
             println!("1");
@@ -6,15 +7,18 @@ mod module_a {
     }
 
     pub struct A;
+
     impl Shape for A {}
 }
 
 mod module_b {
+
     use super::module_a::Shape; // 引入这个trait use super::module_a::A;
     use super::module_a::A; // 这里只引入了另一个模块中的类型
 
     fn doit() {
         let a = A;
+
         a.play();
     }
 }

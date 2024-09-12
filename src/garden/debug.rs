@@ -1,5 +1,7 @@
-use std::fmt::{Debug, Error, Formatter};
-use std::result;
+use std::{
+    fmt::{Debug, Error, Formatter},
+    result,
+};
 
 // Ord
 
@@ -17,6 +19,7 @@ struct Point {
 impl Debug for Point {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         let x = "asd";
+
         result::Result::Ok(())
     }
 }

@@ -21,6 +21,7 @@
 // }
 
 #[derive(Default)]
+
 struct Color {
     r: u32,
     g: u32,
@@ -40,12 +41,14 @@ impl Color {
             ..Color::default() // 注意这一句
         }
     }
+
     fn green(g: u32) -> Self {
         Color {
             g,
             ..Color::default() // 注意这一句
         }
     }
+
     fn blue(b: u32) -> Self {
         Color {
             b,
@@ -55,8 +58,10 @@ impl Color {
 }
 
 #[test]
+
 fn main() {
     let color = Color::default();
+
     // 或
     let color: Color = Default::default();
 }

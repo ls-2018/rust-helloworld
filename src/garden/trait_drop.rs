@@ -3,6 +3,7 @@ trait Drop {
 }
 
 struct A;
+
 impl Drop for A {
     fn drop(&mut self) {
         println!("------");
@@ -11,7 +12,9 @@ impl Drop for A {
 }
 
 #[test]
+
 fn main() {
     let a = A;
+
     println!("{}", "asd")
 }
