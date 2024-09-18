@@ -6,7 +6,7 @@
 // 比如标准库里最常见的 &String 可以自动转换到 &str ，就是因为 String 类型实现了
 // Deref trait。 还有 &Vec 可以自动转换为 &[T]，也是因为 Vec[T] 实现了 Deref。
 
-use std::{ops, ops::Deref};
+use std::ops::Deref;
 
 // 定义一个结构体 C，它包含一个 i32 类型的值
 struct C(i32);

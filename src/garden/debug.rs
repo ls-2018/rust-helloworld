@@ -1,5 +1,5 @@
 use std::{
-    fmt::{Debug, Error, Formatter},
+    fmt::{Debug, Formatter},
     result,
 };
 

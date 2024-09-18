@@ -477,7 +477,6 @@ fn doit3(i: u32) -> TotalType {
 
 
 
-pub use crate::garden::echo;
 
 fn foo2(a: &u32, b: &u32) {
     if a > b {
