@@ -21,5 +21,8 @@ mod trait_deref;
 mod trait_drop;
 mod vec;
 mod vegetables;
+mod env;
+mod web;
+mod r#type;
 
 pub use vegetables::echo;

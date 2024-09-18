@@ -1,41 +1,15 @@
 pub mod garden;
-
-pub use garden::echo;
-
-fn foo2(a: &u32, b: &u32) {
-    if a > b {
-        println!("111");
-    } else {
-        println!("222");
-    }
-}
-
-#[derive(Debug)]
-
-enum MyEnum2<'ax> {
-    Add,
-    Subtract,
-    Mix(&'ax str),
-}
-
 fn main() {
-    trait TraitA {
-        fn foo(&self);
-    }
+    build_vector();
+    
+}
 
-    trait TraitB {
-        fn bar(&self);
-    }
+// Box：指向堆中值的拥有型指针
+// Box: <Attend>
 
-    impl<T: TraitB> TraitA for T {
-        fn foo(&self) {}
-    }
-
-    impl TraitA for u32 {
-        fn foo(&self) {}
-    }
-
-    let x: u32 = 99;
-
-    x.foo();
+fn build_vector() -> Vec<i16> {
+    let mut v: Vec<i16> = Vec::<i16>::new();
+    v.push(10i16);
+    v.push(20i16);
+    v
 }

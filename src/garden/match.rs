@@ -1,5 +1,9 @@
-use crate::MyEnum2;
-
+#[derive(Debug)]
+enum MyEnum2<'ax> {
+    Add,
+    Subtract,
+    Mix(&'ax str),
+}
 #[test]
 
 fn main() {

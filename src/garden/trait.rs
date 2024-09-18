@@ -162,9 +162,9 @@ fn main112() {
 
     let year_from_input = "blarg";
 
-    let good_year = good_year_from_input.parse().unwrap_or_default();
+    let good_year:u32 = good_year_from_input.parse().unwrap_or_default();
 
-    let bad_year = bad_year_from_input.parse().unwrap_or_default();
+    let bad_year:u32 = bad_year_from_input.parse().unwrap_or_default();
 
     let y_year = year_from_input.parse::<String>().unwrap_or_default();
 
@@ -473,4 +473,46 @@ fn doit3(i: u32) -> TotalType {
 
         TotalType::C(c) // 在这个分支中返回变体C
     }
+}
+
+
+
+pub use crate::garden::echo;
+
+fn foo2(a: &u32, b: &u32) {
+    if a > b {
+        println!("111");
+    } else {
+        println!("222");
+    }
+}
+
+#[derive(Debug)]
+
+enum MyEnum2<'ax> {
+    Add,
+    Subtract,
+    Mix(&'ax str),
+}
+fn xxx(){
+    trait TraitA {
+        fn foo(&self);
+    }
+
+    trait TraitB {
+        fn bar(&self);
+    }
+
+    impl<T: TraitB> TraitA for T {
+        fn foo(&self) {}
+    }
+
+    impl TraitA for u32 {
+        fn foo(&self) {}
+    }
+
+    let x: u32 = 99;
+
+    x.foo();
+
 }

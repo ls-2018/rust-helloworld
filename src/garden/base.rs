@@ -194,4 +194,6 @@ fn _ref() {
     println!("{}", username);
 
     println!("{:?}", a);
+    println!("{}", (-4_i32).abs());
+    println!("{}", i32::abs(-4));
 }
