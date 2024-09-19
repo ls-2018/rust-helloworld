@@ -162,9 +162,9 @@ fn main112() {
 
     let year_from_input = "blarg";
 
-    let good_year:u32 = good_year_from_input.parse().unwrap_or_default();
+    let good_year: u32 = good_year_from_input.parse().unwrap_or_default();
 
-    let bad_year:u32 = bad_year_from_input.parse().unwrap_or_default();
+    let bad_year: u32 = bad_year_from_input.parse().unwrap_or_default();
 
     let y_year = year_from_input.parse::<String>().unwrap_or_default();
 
@@ -475,9 +475,6 @@ fn doit3(i: u32) -> TotalType {
     }
 }
 
-
-
-
 fn foo2(a: &u32, b: &u32) {
     if a > b {
         println!("111");
@@ -493,7 +490,7 @@ enum MyEnum2<'ax> {
     Subtract,
     Mix(&'ax str),
 }
-fn xxx(){
+fn xxx() {
     trait TraitA {
         fn foo(&self);
     }
@@ -513,5 +510,4 @@ fn xxx(){
     let x: u32 = 99;
 
     x.foo();
-
 }

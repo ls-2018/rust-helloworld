@@ -15,10 +15,8 @@ fn rc() {
 use std::collections::HashMap;
 type Table = HashMap<String, Vec<String>>;
 
-
-
-
-fn show(table: &Table) { // 传入了共享引用
+fn show(table: &Table) {
+    // 传入了共享引用
     for (artist, works) in table {
         println!("works by {}:", artist);
         for work in works {
@@ -34,11 +32,47 @@ fn sort_works(table: &mut Table) {
 #[test]
 fn _ref() {
     let mut table = Table::new();
-    table.insert("Gesualdo".to_string(), vec!["many madrigals".to_string(), "Tenebrae Responsoria".to_string()]);
-    table.insert("Caravaggio".to_string(), vec!["The Musicians".to_string(), "The Calling of St. Matthew".to_string()]);
-    table.insert("Cellini".to_string(), vec!["Perseus with the head of Medusa".to_string(), "a salt cellar".to_string()]);
+    table.insert(
+        "Gesualdo".to_string(),
+        vec![
+            "many madrigals".to_string(),
+            "Tenebrae Responsoria".to_string(),
+        ],
+    );
+    table.insert(
+        "Caravaggio".to_string(),
+        vec![
+            "The Musicians".to_string(),
+            "The Calling of St. Matthew".to_string(),
+        ],
+    );
+    table.insert(
+        "Cellini".to_string(),
+        vec![
+            "Perseus with the head of Medusa".to_string(),
+            "a salt cellar".to_string(),
+        ],
+    );
     show(&table);
     assert_eq!(table["Gesualdo"][0], "many madrigals");
     sort_works(&mut table);
     // 不可以继续使用 table
+
+    let mut v = vec![1973, 1968];
+    v.sort(); // 隐式借用对v的可变引用
+    (&mut v).sort(); // 等效，但是更烦琐
+    println!("{:?}", v);
+
+    let x = 10;
+    let y = 10;
+
+    let rx = &x;
+    let ry = &y;
+
+    let rrx = &rx;
+    let rry = &ry;
+
+    assert!(rrx <= rry);
+    assert_eq!(rx, ry); // 它们引用的目标值相等
+    assert!(!std::ptr::eq(rx, ry)); // 但所占据的地址（自身的值）不同
 }

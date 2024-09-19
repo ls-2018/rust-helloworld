@@ -19,13 +19,12 @@ fn vxas() {
 
     let a = &v[0]; // 明确a只获得v中第一个元素的引用
 
-
     // 构建一个由字符串"101"、"102"……"105"组成的向量
     let mut v = Vec::new();
     for i in 101..106 {
         v.push(i.to_string());
     }
-    println!("{:?}",v);
+    println!("{:?}", v);
     // 方法一：从向量的末尾弹出一个值：
     let fifth = v.pop().expect("vector empty!");
     assert_eq!(fifth, "105");
@@ -40,5 +39,4 @@ fn vxas() {
     println!("{:?}", v);
     // 看看向量中还剩下什么
     assert_eq!(v, vec!["101", "104", "substitute"]);
-
 }

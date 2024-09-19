@@ -10,17 +10,16 @@ async fn main() {
 
     println!("Serving on http://localhost:3000...");
     server
-        .bind("127.0.0.1:3000").expect("error binding server to address")
+        .bind("127.0.0.1:3000")
+        .expect("error binding server to address")
         .run()
         .await
         .expect("error running server");
 }
 
 async fn get_index() -> HttpResponse {
-    HttpResponse::Ok()
-        .content_type("text/html")
-        .body(
-            r#"
+    HttpResponse::Ok().content_type("text/html").body(
+        r#"
                 <title>GCD Calculator</title>
                 <form action="/gcd" method="post">
                 <input type="text" name="n"/>
@@ -28,7 +27,7 @@ async fn get_index() -> HttpResponse {
                 <button type="submit">Compute GCD</button>
                 </form>
             "#,
-        )
+    )
 }
 
 use serde::Deserialize;
@@ -40,15 +39,19 @@ struct GcdParameters {
 
 async fn post_gcd(form: web::Form<GcdParameters>) -> HttpResponse {
     if form.n == 0 || form.m == 0 {
-        return HttpResponse::BadRequest().content_type("text/html").body("Computing the GCD with zero is boring.");
+        return HttpResponse::BadRequest()
+            .content_type("text/html")
+            .body("Computing the GCD with zero is boring.");
     }
 
-    let response =
-        format!("The greatest common divisor of the numbers {} and {} is <b>{}</b>\n", form.n, form.m, gcd(form.n, form.m));
+    let response = format!(
+        "The greatest common divisor of the numbers {} and {} is <b>{}</b>\n",
+        form.n,
+        form.m,
+        gcd(form.n, form.m)
+    );
 
-    HttpResponse::Ok()
-        .content_type("text/html")
-        .body(response)
+    HttpResponse::Ok().content_type("text/html").body(response)
 }
 
 fn gcd(mut n: u64, mut m: u64) -> u64 {

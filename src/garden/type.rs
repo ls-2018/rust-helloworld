@@ -1,6 +1,5 @@
 #[test]
 fn type__() {
-
     // 前缀 checked_、wrapping_、saturating_ 或 overflowing_
 
     // checked_ 运算会返回结果的 Option 值：如果数学意义上正确的结果可以表示为该类型的值，那么就为 Some(v)，否则为 None。
@@ -17,18 +16,17 @@ fn type__() {
     (-32768_i16).wrapping_abs() == -32768; // 绝对值abs
     10_u32.wrapping_shl(34) == 40; // 按位左移shl
     40_u64.wrapping_shr(66) == 10; // 按位右移shr
-    //  第一个结果可以表示为 u16，第二个则不能，所以会得到 250000  对 2**16的模
+                                   //  第一个结果可以表示为 u16，第二个则不能，所以会得到 250000  对 2**16的模
     assert_eq!(100_u16.wrapping_mul(200), 20000);
     assert_eq!(500_u16.wrapping_mul(500), 53392); // 250000 溢出，会取 余数     250000 % 2**16
-    //  对有符号类型的运算可能会回绕为负值
+                                                  //  对有符号类型的运算可能会回绕为负值
     assert_eq!(500_i16.wrapping_mul(500), -12144);
     //  在移位运算中，移位距离会在值的大小范围内回绕，
     //  所以在 16 位类型中移动 17 位就相当于移动了 1 位
     assert_eq!(5_i16.wrapping_shl(17), 10);
 
-
     // saturating_ 运算会返回最接近“数学意义上正确结果”的可表达值。换句话说，结果“紧贴着”该类型可表达的最大值和最小值。
-    assert_eq!(32760_i16.saturating_add(10), 32767); // 
+    assert_eq!(32760_i16.saturating_add(10), 32767); //
     assert_eq!((-32760_i16).saturating_sub(10), -32768);
     128_u8.saturating_mul(3) == 255; // 乘法mul
     println!("{:?}", (-32760_i16).saturating_sub(10));
@@ -38,7 +36,6 @@ fn type__() {
     assert_eq!(255_u8.overflowing_add(2), (1, true));
     // 移动17位对`u16`来说太大了
     assert_eq!(5_u16.overflowing_shl(17), (10, true)); // (5 << 17) % 65535
-
 
     assert!((-1. / f32::INFINITY).is_sign_negative());
     assert_eq!(-f32::MIN, f32::MAX);
@@ -73,7 +70,7 @@ fn type__() {
     assert_eq!(chaos, [1, 2, 3, 4, 5]);
 
     let t = (12, "eggs");
-    let b = Box::new(t);  // 在堆中分配一个元组
+    let b = Box::new(t); // 在堆中分配一个元组
 
     let v: Vec<i32> = (0..5).collect();
     assert_eq!(v, [0, 1, 2, 3, 4]);
@@ -92,7 +89,6 @@ fn type__() {
     // 通常会打印出"capacity is now 4":
     println!("capacity is now {}", v.capacity());
 
-
     let mut v = vec![10, 20, 30, 40, 50];
 
     // 在索引为3的元素处插入35
@@ -103,19 +99,20 @@ fn type__() {
     v.remove(1);
     assert_eq!(v, [10, 30, 35, 40, 50]);
 
-
     // println!("{}",(-4).abs());//  can't call method `abs` on ambiguous numeric type `{integer}`
     println!("{}", (-4_i32).abs());
-
 
     // 将命令行参数作为字符串的向量
     let languages: Vec<String> = std::env::args().skip(1).collect();
     for l in languages {
-        println!("{}: {}", l,
-                 if l.len() % 2 == 0 {
-                     "functional"
-                 } else {
-                     "imperative"
-                 });
+        println!(
+            "{}: {}",
+            l,
+            if l.len() % 2 == 0 {
+                "functional"
+            } else {
+                "imperative"
+            }
+        );
     }
 }

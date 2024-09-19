@@ -1,7 +1,6 @@
 pub mod garden;
 fn main() {
     build_vector();
-    
 }
 
 // Box：指向堆中值的拥有型指针
