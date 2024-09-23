@@ -47,6 +47,7 @@ struct S2 {
     // r: &i32, // r 可能引用一个短声明周期的参数，
 }
 
+#[allow(unused_variables)]
 struct S3<'a, 'b> {
     x: &'a i32,
     y: &'b i32,

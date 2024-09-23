@@ -1,9 +1,8 @@
 use std::fmt;
-use std::io::stderr;
 
 #[test]
 fn x() {
-    let mut x = xa();
+    let x = xa();
     if x.is_err() {
         println!("error: {:?}", x.err()); // 警告：未使用的结果
     }

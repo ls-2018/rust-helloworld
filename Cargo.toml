@@ -6,4 +6,11 @@ edition = "2021"
 [dependencies]
 actix-web = "4.1"
 serde = { version = "1.0", features = ["derive"] }
+garden = {path="./sub/garden"}
 
+[profile.dev]
+
+[profile.release]
+debug = true  # 在release构建中启用debug符号
+
+[profile.test]

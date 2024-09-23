@@ -6,7 +6,7 @@ enum _IpAddrKind {
 // #[allow(dead_code)]
 #[derive(Debug)]
 
-struct User {
+pub(crate) struct User {
     active: bool,
     username: String,
     age: u64,

@@ -16,10 +16,9 @@ struct Point {
     y: i32,
 }
 
+#[allow(unused_variables)]
 impl Debug for Point {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        let x = "asd";
-
         result::Result::Ok(())
     }
 }

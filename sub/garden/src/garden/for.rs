@@ -1,4 +1,3 @@
-use crate::garden::echo;
 
 #[test]
 
@@ -65,6 +64,7 @@ fn main() {
                                  // let result1 = add_v1(20);    // 调用函数
     let result2 = add_v2(20); // 调用闭包
     println!("{}", result2);
+    use crate::garden::echo;
 
     print!("{}", echo(1));
 

@@ -1,6 +1,8 @@
-pub mod garden;
+use garden::echo;
+
 fn main() {
     build_vector();
+    println!("{}", echo(12))
 }
 
 // Box：指向堆中值的拥有型指针

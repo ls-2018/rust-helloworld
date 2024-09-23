@@ -29,3 +29,6 @@ mod web;
 mod width_ref;
 
 pub use vegetables::echo;
+
+#[allow(unused_imports)]
+use self::base::User;
