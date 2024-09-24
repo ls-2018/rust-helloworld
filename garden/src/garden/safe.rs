@@ -62,7 +62,7 @@ fn doit(i: u32) -> Box<dyn TraitA> {
 
     // impl trait
     // 来说，它目前只能用于少数几个地方。一个是函数参数，另一个是函数返回值
-    // dyn trait 本身是一种非固定尺寸类型
+    // trait 本身是一种非固定尺寸类型
     if i == 0 {
         let a = Atype;
 
@@ -92,3 +92,12 @@ fn doit11114(x: &dyn TraitA) {}
 // 用于在运行时代理相关类型及调用对应方法。
 // 既然是代理，也就是调用方法的时候需要多跳转一次，从性能上来说，
 // 当然要比在编译期直接展开一步到位调用对应函数要慢一点。
+
+
+fn xx(){
+    use std::io::Write;
+    let mut buf: Vec<u8> = vec![];
+    // let writer: dyn Write = buf;  // 错误：`Write`的大小不是常量
+    let mut buf: Vec<u8> = vec![];
+    let writer: &mut dyn Write = &mut buf;  // 正确
+}

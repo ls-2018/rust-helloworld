@@ -1,4 +1,3 @@
-
 #[test]
 fn main() {
     use std::env;

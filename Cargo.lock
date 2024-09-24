@@ -955,7 +955,6 @@ name = "rust-helloworld"
 version = "0.1.0"
 dependencies = [
  "actix-web",
- "garden",
  "serde",
 ]
 

@@ -47,25 +47,27 @@ struct S2 {
     // r: &i32, // r 可能引用一个短声明周期的参数，
 }
 
-#[allow(unused_variables)]
-struct S3<'a, 'b> {
-    x: &'a i32,
-    y: &'b i32,
-}
+mod tests {
 
-#[test]
-fn sm() {
-    let x = 10;
-    let r;
-    {
-        let y = 20;
-        {
-            let s = S3 { x: &x, y: &y };
-            //  让每个引用都有各自的生命周期，就可以解决所有问题：
-            r = s.x;
-        }
+    #[allow(unused_variables)]
+    struct S3<'a, 'b> {
+        x: &'a i32,
+        y: &'b i32,
     }
-    println!("{}", r);
 
-    println!("{:?}", 5 * (41 - 32) / 9)
+    #[test]
+    fn sm() {
+        let x = 10;
+        let r;
+        {
+            let y = 20;
+            {
+                let s = S3 { x: &x, y: &y };
+                //  让每个引用都有各自的生命周期，就可以解决所有问题：
+                r = s.x;
+            }
+        }
+        println!("{}", r);
+        println!("{:?}", 5 * (41 - 32) / 9)
+    }
 }

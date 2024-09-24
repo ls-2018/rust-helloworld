@@ -1,3 +1,6 @@
+#[inline]
+// #[inline(always)]
+// #[inline(never)]
 pub fn echo(a: i32) -> i32 {
     a
 }
