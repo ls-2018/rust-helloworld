@@ -1,20 +1,32 @@
-trait Drop {
-    fn drop(&mut self);
+struct Appellation {
+    name: String,
+    nicknames: Vec<String>,
 }
 
-struct A;
-
-impl Drop for A {
+impl Drop for Appellation {
     fn drop(&mut self) {
-        println!("------");
-        // 可以尝试在这里打印点东西看看什么时候调用
+        print!("Dropping {}", self.name);
+        if !self.nicknames.is_empty() {
+            print!(" (AKA {})", self.nicknames.join(", "));
+        }
+        println!("");
     }
 }
-
 #[test]
 
 fn main() {
-    let a = A;
+    let mut a = Appellation {
+        name: "Zeus".to_string(),
+        nicknames: vec![
+            "cloud collector".to_string(),
+            "king of the gods".to_string(),
+        ],
+    };
 
-    println!("{}", "asd")
+    println!("before assignment");
+    a = Appellation {
+        name: "Hera".to_string(),
+        nicknames: vec![],
+    };
+    println!("at end of block");
 }

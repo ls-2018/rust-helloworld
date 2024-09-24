@@ -1,4 +1,5 @@
 use std::ops::Add;
+use std::ops::Mul;
 
 // trait Add<Rhs = Self> {// Rhs 可以是任意名, 默认类型是 Self
 //     type Output;
@@ -25,6 +26,17 @@ impl Add for Point {
         Point {
             x: self.x + rhs.x,
             y: self.y + rhs.y,
+        }
+    }
+}
+
+impl Mul for Point {
+    type Output = Point;
+
+    fn mul(self, rhs: Point) -> Point {
+        Point {
+            x: self.x * rhs.x,
+            y: self.y * rhs.y,
         }
     }
 }
@@ -67,3 +79,5 @@ struct San {
     x: u32,
     y: u32,
 }
+
+//

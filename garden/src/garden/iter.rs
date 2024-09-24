@@ -1,7 +1,6 @@
 #[test]
 
 fn main() {
-
     use super::base::User;
     // use crate::garden::User; // 显式导入相对于crate根路径的语法项
     let a: Vec<u32> = vec![1, 2, 3, 4, 5];

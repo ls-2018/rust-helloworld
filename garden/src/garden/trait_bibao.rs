@@ -12,7 +12,7 @@ fn mainFnOnce() {
     let get_range_count = || range.count();
 
     assert_eq!(get_range_count(), 10); // ✅
-    // get_range_count(); // ❌
+                                       // get_range_count(); // ❌
 }
 
 #[test]
@@ -56,7 +56,6 @@ fn mainFn() {
     dot_product::<3>([0.2, 0.4, 0.6], [0., 0., 1.]);
     dot_product([1f64, 4f64], [1f64, 2f64]);
 }
-
 
 fn dot_product<const N: usize>(a: [f64; N], b: [f64; N]) -> f64 {
     let mut sum = 0.;

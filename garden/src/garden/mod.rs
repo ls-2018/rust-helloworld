@@ -4,6 +4,7 @@ mod class;
 mod debug;
 mod display;
 mod env;
+mod file;
 mod r#for;
 mod from;
 mod r#if;
@@ -27,7 +28,6 @@ mod vec;
 mod vegetables;
 mod web;
 mod width_ref;
-mod file;
 
 pub use vegetables::echo;
 

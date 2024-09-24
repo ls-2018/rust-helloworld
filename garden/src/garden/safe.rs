@@ -93,11 +93,10 @@ fn doit11114(x: &dyn TraitA) {}
 // 既然是代理，也就是调用方法的时候需要多跳转一次，从性能上来说，
 // 当然要比在编译期直接展开一步到位调用对应函数要慢一点。
 
-
-fn xx(){
+fn xx() {
     use std::io::Write;
     let mut buf: Vec<u8> = vec![];
     // let writer: dyn Write = buf;  // 错误：`Write`的大小不是常量
     let mut buf: Vec<u8> = vec![];
-    let writer: &mut dyn Write = &mut buf;  // 正确
+    let writer: &mut dyn Write = &mut buf; // 正确
 }
