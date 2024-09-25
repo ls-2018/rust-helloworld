@@ -6,24 +6,48 @@
 // 比如标准库里最常见的 &String 可以自动转换到 &str ，就是因为 String 类型实现了
 // Deref trait。 还有 &Vec 可以自动转换为 &[T]，也是因为 Vec[T] 实现了 Deref。
 
-use std::ops::Deref;
+use std::fmt::Display;
+use std::ops::*;
+struct Selector<T> {
+    elements: Vec<T>,
+    current: usize,
+}
 
-// 定义一个结构体 C，它包含一个 i32 类型的值
-struct C(i32);
-
-// 为 C 实现 Deref trait
-impl Deref for C {
-    type Target = i32;
-
-    // 指定 Deref 的目标类型
-
-    fn deref(&self) -> &Self::Target {
-        &self.0 // 返回对内部 i32 值的引用
+impl<T> Deref for Selector<T> {
+    type Target = T;
+    fn deref(&self) -> &T {
+        println!("deref");
+        &self.elements[self.current]
     }
 }
 
-fn main() {
-    let c = C(10);
-
-    println!("The value is: {}", *c); // 使用 * 来解引用 c
+impl<T> DerefMut for Selector<T> {
+    fn deref_mut(&mut self) -> &mut T {
+        println!("deref_mut");
+        &mut self.elements[self.current]
+    }
 }
+
+#[test]
+fn x() {
+    let a = vec!['x', 'y', 'z'];
+    let mut s = Selector { elements: vec!['x', 'y', 'z'], current: 2 };
+
+    // 因为`Selector`实现了`Deref`，所以可以使用`*`运算符来引用它的当前元素
+    assert_eq!(*s, 'z');
+    // 通过隐式解引用直接在`Selector`上使用`char`的方法断言'z'是字母
+    assert!(s.is_alphabetic());
+    // 通过对此`Selector`的引用目标赋值，把'z'改成了'w'
+    *s = 'w';
+    assert_eq!(s.elements, ['x', 'y', 'w']);
+    s.deref(); // &char
+    s.deref_mut(); //  mut &char
+    show_it(&s);
+    show_it(s.deref());
+    show_it(&*s);
+    show_it(&s.deref_mut());
+    show_it_generic(s.deref());  // &char
+}
+
+fn show_it(thing: &char) { println!("{}", thing); }
+fn show_it_generic<T: Display>(thing: T) { println!("{}", thing); }

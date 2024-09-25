@@ -12,7 +12,7 @@ fn mainFnOnce() {
     let get_range_count = || range.count();
 
     assert_eq!(get_range_count(), 10); // ✅
-                                       // get_range_count(); // ❌
+    // get_range_count(); // ❌
 }
 
 #[test]
@@ -64,3 +64,12 @@ fn dot_product<const N: usize>(a: [f64; N], b: [f64; N]) -> f64 {
     }
     sum
 }
+
+
+//1、 一个不修改变量的非 move 闭包只持有共享引用，这些引用既能 Clone 也能 Copy，所以闭包也能 Clone 和 Copy
+//2、另外，一个会修改值的非 move 闭包在其内部表示中也可以有可变引用。可变引用既不能 Clone，也不能 Copy
+//3、如果 move 闭包捕获的所有内容都能 Copy，那它就能 Copy。如果 move 闭包捕获的所有内容都能 Clone，那它就能 Clone。
+
+
+// 不拥有任何资源的简单类型可以是 Copy 类型，对这些简单类型赋值会创建源的副本，而不会移动值并使源回到未初始化状态。
+

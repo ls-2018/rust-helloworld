@@ -28,6 +28,7 @@ mod vec;
 mod vegetables;
 mod web;
 mod width_ref;
+mod trait_asref;
 
 pub use vegetables::echo;
 

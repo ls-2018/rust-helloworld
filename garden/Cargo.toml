@@ -7,3 +7,6 @@ edition = "2021"
 actix-web = "4.9.0"
 crates-io = "0.40.4"
 serde = { version = "1.0.210", features = ["derive"] }
+rand = "0.8.5"
+num = "0.4.3"
+num-complex = "0.4.6"
