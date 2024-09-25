@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use actix_web::middleware::from_fn;
 use rand::random;
 
@@ -210,4 +210,79 @@ fn a1() {
 
     assert_eq!(living, vec!["doorknob"]);
     assert_eq!(nonliving, vec!["mushroom", "noodle", "giraffe", "grapefruit"]);
+}
+
+
+struct I32Range {
+    start: i32,
+    end: i32,
+}
+impl Iterator for I32Range {
+    type Item = i32;
+    fn next(&mut self) -> Option<i32> {
+        if self.start >= self.end {
+            return None;
+        }
+        let result = Some(self.start);
+        self.start += 1;
+        result
+    }
+}
+
+#[test]
+fn ass() {
+    let mut pi = 0.0;
+    let mut numerator = 1.0;
+
+    for k in (I32Range { start: 0, end: 14 }) {
+        println!("{:?}", k);
+        pi += numerator / (2 * k + 1) as f64;
+        numerator /= -3.0;
+    }
+    pi *= f64::sqrt(12.0);
+    println!("{:?}", pi);
+    // IEEE 754精确定义了此结果
+    assert_eq!(pi as f32, std::f32::consts::PI);
+    let mut x = Vec::<I32Range>::new();
+    // x.resize
+    x.resize_with(10, || I32Range { start: 1, end: 2 }); // 不支持
+
+    let mut byte_vec = b"Misssssssissippi".to_vec();
+
+    let mut seen = HashSet::new();
+    byte_vec.dedup();  // 只能移除相邻的重复项
+    byte_vec.retain(|r| seen.insert(*r)); // 没插入的不保留
+    assert_eq!(&byte_vec, b"Misp");
+}
+
+#[test]
+fn ass2() {
+    let mut a = vec![1, 2, 3, 4, 5, 6, 7, 8];
+    // a.remove(1);// 移除，并把后面的数据往前挪
+    // a.remove(1);
+    // a.remove(1);
+    a.swap_remove(1); // 移除，并将最后的数据挪过来
+    a.swap_remove(1); // 移除，并将最后的数据挪过来
+    a.swap_remove(1); // 移除，并将最后的数据挪过来
+    println!("{:?}", a);
+}
+
+#[test]
+fn main2() {
+    let mut my_vec = vec![1, 3, 5, 7, 9];
+    // for (index, &val) in my_vec.iter().enumerate() {
+    //     if val > 4 {
+    //         my_vec.remove(index);  // 错误：不能把`my_vec`借用为可变的
+    //     }
+    // }
+    my_vec.retain(|&val| val <= 4);
+    println!("{:?}", my_vec);
+
+    // 这个`Map`包含给定字符串的所有单词以及单词的出现次数
+    let mut word_frequency: HashMap<&str, u32> = HashMap::new();
+    let record = word_frequency.entry("name").or_insert_with(|| 1);
+
+    word_frequency.entry("c")
+        .and_modify(|count| *count += 1)
+        .or_insert(1);
 }
