@@ -7,3 +7,6 @@
 
 
 - to_owned   ?
+- as_ref   ?
+- Borrowed   ?
+- Cow   ?

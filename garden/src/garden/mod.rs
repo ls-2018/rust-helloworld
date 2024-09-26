@@ -30,6 +30,9 @@ mod web;
 mod width_ref;
 mod trait_asref;
 mod random;
+mod str;
+mod reg;
+mod io;
 
 pub use vegetables::echo;
 

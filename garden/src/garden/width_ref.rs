@@ -49,7 +49,6 @@ struct S2 {
 
 mod tests {
 
-    #[allow(unused_variables)]
     struct S3<'a, 'b> {
         x: &'a i32,
         y: &'b i32,
