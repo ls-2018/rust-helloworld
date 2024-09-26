@@ -285,4 +285,15 @@ fn main2() {
     word_frequency.entry("c")
         .and_modify(|count| *count += 1)
         .or_insert(1);
+    println!("{:?}", "ערב טוב".chars().next());
+    assert_eq!("ערב טוב".chars().next(), Some('ע'));
+
+
+    assert_eq!('F'.to_digit(16), Some(15));
+    assert_eq!(std::char::from_digit(15, 16), Some('f'));
+    assert!(char::is_digit('f', 16));
+
+    let mut upper = 's'.to_uppercase();
+    assert_eq!(upper.next(), Some('S'));
+    assert_eq!(upper.next(), None);
 }
