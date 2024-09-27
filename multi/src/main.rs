@@ -82,3 +82,12 @@ fn global_static_var() {
     let worker_cancel_flag = cancel_flag.clone();
     worker_cancel_flag.load(Ordering::SeqCst); // 内存排序
 }
+
+fn main() {
+    // async_std::task::yield_now().await;// 主动放弃执行
+    // async_std::task::spawn_blocking();// 接受一个闭包,并在独立的线程上运行它
+    // async_std::task::spawn_local()
+}
+
+type GenericError = Box<dyn std::error::Error + Send + Sync + 'static>;
+type GenericResult<T> = Result<T, GenericError>;
