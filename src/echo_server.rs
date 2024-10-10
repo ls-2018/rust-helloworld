@@ -1,10 +1,10 @@
-// use garden::write_log_entry;
+use garden::{bad_assert_eq, log, write_log_entry};
 use std::collections::HashMap;
 use std::io;
 use std::net::TcpListener;
 use std::thread::spawn;
-#[macro_use]
-extern crate garden;
+// #[macro_use]
+// extern crate garden;
 
 // Box：指向堆中值的拥有型指针
 // Box: <Attend>

@@ -4,7 +4,6 @@ mod class;
 mod debug;
 mod display;
 mod env;
-#[macro_use]
 mod file;
 mod err;
 mod r#for;
@@ -36,12 +35,12 @@ mod vegetables;
 mod web;
 mod width_ref;
 
-// #[allow(unused_imports)]
-// #[allow(unused_variables)]
-// #[allow(unreachable_patterns)]
-// #[allow(unused_mut)]
-// #[allow(non_snake_case)]
-// #[allow(unused_must_use)]
-// #[allow(dead_code)]
-// #[allow(unused_assignments)]
-// pub use file::write_log_entry;
+#[allow(unused_imports)]
+#[allow(unused_variables)]
+#[allow(unreachable_patterns)]
+#[allow(unused_mut)]
+#[allow(non_snake_case)]
+#[allow(unused_must_use)]
+#[allow(dead_code)]
+#[allow(unused_assignments)]
+pub use file::*;
