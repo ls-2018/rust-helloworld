@@ -18,9 +18,18 @@ Fern simulation, from the cellular level up.
 
 [dependencies]
 actix-web = "4.1"
+anyhow = "1.0.89"
 reqwest = "0.12.7"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.128"
+lazy_static = "1.5.0"
+rayon = "1.10.0"
+async-std = { version = "1", features = ["unstable"] }
+tokio = { version = "1", features = ["full"] }
+thiserror = "1.0.64"
+log = "0.4.22"
+garden = { path = "./garden" }
+
 
 
 [profile.dev]
@@ -29,3 +38,8 @@ serde_json = "1.0.128"
 debug = true  # 在release构建中启用debug符号
 
 [profile.test]
+
+
+[[bin]]
+name = "echo_server"
+path = "src/echo_server.rs"
